@@ -14,7 +14,7 @@ Gradle使用它在您的路径中找到的任何JDK。或者，您可以将JAVA_
 
 ## 使用包管理器进行安装
 
-* **[SDKMAN!](https://sdkman.io/)**是一个在大多数基于Unix的系统上管理多个软件开发工具包的并行版本的工具。
+* **[SDKMAN!](https://sdkman.io/)** 是一个在大多数基于Unix的系统上管理多个软件开发工具包的并行版本的工具。
 
     > sdk install gradle
 
