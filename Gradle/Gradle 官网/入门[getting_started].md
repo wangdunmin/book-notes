@@ -11,3 +11,10 @@
 Android Studio附带了Gradle的可用安装，因此在这种情况下您无需单独安装Gradle。
 
 为了创建新的构建或将Wrapper(包装器)添加到现有的构建中，您需要[根据这些指令](安装Gradle[installing_Gradle].md)安装Gradle。请注意，除了页面中所描述的之外，可能还有其他安装Gradle的方法，因为几乎不可能跟踪所有的包管理器
+
+## 尝试Gradle
+
+积极使用Gradle是了解它的好方法，所以一旦你安装了Gradle，请尝试一个介绍性的实践教程
+
+* [创建基本的Gradle构建](创建基本的Gradle构建[creating_a_basic_Gradle_build].md)
+* [构建Java库](构建Java库[building_java_libraries].md)
