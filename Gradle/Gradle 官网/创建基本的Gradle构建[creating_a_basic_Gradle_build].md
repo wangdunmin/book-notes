@@ -149,3 +149,5 @@ buildFile属性是您的构建脚本的完全限定路径名，默认情况下�
 description = "A trivial Gradle build"
 version = "1.0"
 ```
+
+代码示例已经上传到github，可以访问[链接](https://github.com/wangdunmin/practice-project.git)，查看practice-gradle/demo-base-gradle
