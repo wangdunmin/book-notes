@@ -6,7 +6,7 @@
 
 ## 安装
 
-如果您想要做的只是运行一个现有的Gradle构建，那么如果构建有一个gradlew和/或gradlew.bat文件在构建的根目录中可以识别，那么您就不需要安装Gradle。您只需要确保您的系统满足Gradle的[先决条件](安装Gradle[installing_Gradle].md##先决条件)。
+如果您想要做的只是运行一个现有的Gradle构建，那么如果构建有一个gradlew和/或gradlew.bat文件在构建的根目录中可以识别，那么您就不需要安装Gradle。您只需要确保您的系统满足Gradle的[先决条件](安装Gradle[installing_Gradle].md#先决条件)。
 
 Android Studio附带了Gradle的可用安装，因此在这种情况下您无需单独安装Gradle。
 
