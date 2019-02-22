@@ -131,3 +131,6 @@ java-library 通过javadoc任务内置了对Java API文档工具的支持。
 * build并查看测试报告
 * 自定义jar名称和 manifest清单文件
 * 生成API文档
+
+
+代码示例已经上传到github，可以访问[链接](https://github.com/wangdunmin/practice-project.git)，查看practice-gradle/demo-java-library-gradle
