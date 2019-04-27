@@ -294,41 +294,26 @@ combiner是通过Reducer类来定义的，在这个例子中，它和Reducer的�
     public class MaxTemperature{
 
         public static void main(String[] args) throws Exception {
-            // 校验输入参数
             if(args.length != 2){
                 System.err.println("Usage: MaxTemperature <input path> <output path>");
                 System.exit(-1);
             }
 
-            // 创建运行MapReduce的工作
             Job job = new Job();
-            // 设置jar包；由于在Hadoop上运行这个作业时，需要把代码打包成一个JAR文件
-            // setJarByClass()方法接受一个类，Hadoop通过这个类查到到包含它的JAR文件，从而找到相关的JAR文件
             job.setJarByClass(MaxTemperature.class);
             job.setJobName("最高气温");
 
-            // 添加工作的文件输入路径
-            // 路径可以使单个的文件，一个目录(将目录下的所有文件当做输入)或符合特定文件模式的一系列文件
-            // 函数名以add*开头，说明可以多次调用设置多条路径
             FileInputFormat.addInputPath(job,new Path(args[0]));
-            // 设置工作的结果输出路径
-            // 这里指的是reduce函数结果的输出目录
-            // 注意：在运行前，该目录不应该存在，若果存在，Hadoop会报错并拒绝运行作业，这样坐是为了防止数据丢失(结果被意外覆盖)
             FileOutputFormat.setOutputPath(job,new Path(args(1)));
 
-            // 设置mapper和reduce函数，在java中函数不能独立于类出现所以在此处设置类
             job.setMapperClass(MaxTemperatureMapper.class);
+            // 指定combinder函数
             job.setCombinderClass(MaxTemperatureMapper.class);
             job.setReducerClass(MaxTemperatureReducer.class);
 
-            // 设置reduce的输出类型
-            // 若map和reduce的输出类型相同时，可以不设置map的输出格式，如本例
-            // 如果不同，则通过setMapOutputKeyClass和setMapOutputValueClass函数设置map的输出格式
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(IntWritable.class);
             
-            // 运行作业并依靠运行的结果停止JVM
-            // waitForCompletion方法接受一个Boolean参数；表示是否生成详细的输出
             System.exit(job.waitForCompletion(true) ? 0 : 1);
         }
 
