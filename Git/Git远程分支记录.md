@@ -55,7 +55,7 @@ git clone -b 分支名 仓库地址
 > ```
 > fatal: 'origin/fenzhi' is not a commit and a branch 'fenzhi1' cannot be created from it
 > ```
-> 这时刻通过以下命令将本地仓库和远程仓库信息同步
+> 这时可通过以下命令将本地仓库和远程仓库信息同步
 > ``` 
 > git fetch
 > ```
