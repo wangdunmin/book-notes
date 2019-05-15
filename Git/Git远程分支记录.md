@@ -1,4 +1,4 @@
-命令详情可查看[Git官方文档](!https://git-scm.com/book/zh/v2)
+命令详情可查看[Git官方文档](https://git-scm.com/book/zh/v2)
 * 新建并切换分支
 ```
 git checkout -b fenzhi
