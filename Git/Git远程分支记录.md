@@ -51,7 +51,7 @@ git clone -b 分支名 仓库地址
 ```
 
 > 注意：
-> 在测试中，由于本地仓库和远程仓库分支信息不同步，导致出现如下异常
+> 在测试中，由于本地仓库和远程仓库分支信息不同步，导致切换跟踪分支时出现如下异常
 > ```
 > fatal: 'origin/fenzhi' is not a commit and a branch 'fenzhi1' cannot be created from it
 > ```
