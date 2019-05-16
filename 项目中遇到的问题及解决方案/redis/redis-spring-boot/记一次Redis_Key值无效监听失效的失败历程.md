@@ -1,6 +1,7 @@
 有时需要监听Redis的事件从而在Redis事件发生时添加一些后续操作；在实际开发过程中，有这么一个需求，监听Redis中的键状态，从而去更改程序中数据的状态；实现方法如下：
 
 * **方法一**: 实现redis提供的MessageListener接口
+
     首先开启Redis的监听事件，大约在Redis配置文件的889行，或者直接搜索**notify-keyspace-events**，将其更改为你需要监听的类型
     
     > 这段注释已经写得非常清楚了，建议想了解配置详情的哥们可以把下面这部分注释复制粘贴到翻译软件中自己理解，如果急于功能实现的话，那么就把**notify-keyspace-events**属性设置为EA
@@ -50,7 +51,7 @@
     #  specify at least one of K or E, no events will be delivered.
     # notify-keyspace-events ""
     ```
-    首先需要实现MessageListener接口
+    其次需要实现MessageListener接口
     ```java
     @Component
     @Slf4j
@@ -82,8 +83,6 @@
     }
 
     ```
-
-
 * **方法二**: 继承redis提供的KeyExpirationEventMessageListener类
 
     ```java
