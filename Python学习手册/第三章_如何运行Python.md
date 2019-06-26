@@ -103,7 +103,7 @@ spam!spam!spam!spam!spam!spam!spam!spam!
 
 > 如果模块文件不在当前执行目录中，则需要给出模块文件的完整路径
 
-由于这种方法是使用shell命令进行启动，所以常见的shell语法在这也适用；如下我们使用**流重定向**，将输出输出到文件中。
+由于这种方法是使用shell命令进行启动，所以常见的shell语法在这也适用；如下我们使用**流重定向**，将输出输出到[文件](/code/03/script1_output.txt)中。
 
 ```
 D:\github\book-notes\Python学习手册\code>python script1.py > script1_output.txt
