@@ -102,7 +102,7 @@ Python还包括了一些极为少见的数字对象，如复数，固定精度�
 
 ## 序列的操作
 
--- 所有序列共有的操作
+-- **所有序列共有的操作**
 
 作为序列，字符串支持位置索引的相关操作；索引是按照从最前面的偏移量进行编码的，第一个的偏移量为0，第二个为1，以此类推。比如
 
@@ -202,4 +202,129 @@ TypeError: 'str' object does not support item assignment
 
 -- 字符串类型的方法
 
+字符串还有其独有的操作，它们作为方法存在
 
+|字符串方法|含义|示例|结果|
+|---|---|---|---|
+|find|子字符串查找操作,它返回子字符串的位置偏移量，当没有找到时，返回-1|'Spam'.find(pa)|1|
+|replace|替换子字符串|'Spam'.replace('pa','XYZ')|SXYZm|
+|split|分割字符串|'a,b,c,d'.split(',')|['a','b','c','d']|
+|upper|将小写字符转换为大写字母|'xY'.upper()|XY|
+|isalpha|是否是字母|'a'.isalpha()|True|
+|isdigit|是否是数字|'a'.isdigit()|Flase|
+|rstrip|去除字符收尾空格字符|'aaa,bbb\n'.rstrip()|aaa,bbb|
+
+注意虽然字符串方法名存在改变的含义，但是由于字符串是**不可变的**，所以它常常是返回一个新的字符串值，原来的字符串并不发生改变
+
+除了这些基本的方法之外，字符串还支持一种叫做**格式化**的高级替换操作；它可以使用表达式的形式(最初的)或作为一个字符串方法(Python2.6和3.0新引入的)调用。
+
+```python
+>>> '%s 是 %s' % ('你','我的')
+'你 是 我的'
+>>> '{0} 也是 {1}'.format('你','我的')
+'你 也是 我的'
+```
+
+> 通常来说；多种类型通用的操作都是以内置函数(len())或表达(S[0])式的形式出现，而类型特定的操作一般都是以方法调用的形式出现('a'.upper())。记住这些可以让我们很轻松的从Python世界中找到并使用我们需要的工具；下面会介绍一些技巧
+
+## 寻求帮助
+
+虽然我们在上面介绍了字符串的一些方法，但是对于字符串类型来说，这只是其中的一部分，我们可以通过以下的步骤去获取其它的方法列表和使用方式
+
+1. 第一步，使用dir内置函数列出**对象**的属性，由于方法也是属性的一部分，所以它们也会被列出
+
+    ```python
+    >>> dir('a')
+    ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '_
+    _eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs
+    __', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__'
+    , '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__',
+    '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__'
+    , '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'e
+    ncode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isal
+    num', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', '
+    isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lo
+    wer', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust',
+    'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip',
+    'swapcase', 'title', 'translate', 'upper', 'zfill']
+    ```
+
+    > 在后面我们会给出，我们可以通过自定义以下划线开头结尾的属性去定制自己的类型和操作
+2. 第二步，使用help内置函数，获取对应属性的详细介绍
+
+    ```python
+    >>> help('a'.isupper)
+    Help on built-in function isupper:
+
+    isupper() method of builtins.str instance
+    Return True if the string is an uppercase string, False otherwise.
+
+    A string is uppercase if all cased characters in the string are uppercase and
+    there is at least one cased character in the string.
+
+    ```
+
+    help方法也支持传入一个对象，此时它将会返回对象所有方法的详细信息
+
+    > Python中与help类似的有一个PyDoc工具，他可以从对象中提取文档，并将结果生成HTML格式
+
+## 编写字符串的其它方法
+
+* 反斜线转义序列表示的特殊字符
+
+```python
+>>> len('a\nB\tC') # \n代表换行 \t代表空格 它们每个代表一个字符
+5
+>>> ord('\n')      # \n 在ASCII中表示为10
+10
+>>> len('A\0B\0C') # \0 二进制0字节，不终止字符串
+5
+```
+
+* 三引号包含多行字符；字符串可以包括在单引号和双引号中，它们的意义相同
+
+```python
+>>> a = '''
+... a
+... ccc
+... '''
+>>> a
+'\na\nccc\n'
+```
+* 原始字符常量；对字符中的转义字符不做处理，它们通常以'r'开头
+```python
+>>> a = 'a\na'
+>>> print(a)
+a
+a
+>>> a = r'a\na'
+>>> print(a)
+a\na
+```
+
+* Unicode字符串
+
+```python
+>>> a = '\u6211'
+>>> print(a)
+我
+```
+> Python3.0中，str类型也处理Unicode，bytes类型表示原始字节字符串
+> 
+> Python2.6中，Unicode是单独的类型，str处理8位字符串和二进制数据 
+
+## 模式匹配
+
+使用模式匹配，我们需要导入**re**模块，然后使用它其中包含的工具方法
+
+```python
+>>> import re
+>>> match = re.match('Hello[ \t]*(.*)world','Hello    Python world')
+>>> match.group(1)
+'Python '
+>>> match = re.match('/(.*)/(.*)/(.*)','usr/hoe/tesr')
+>>> match.groups()
+('usr','hoe','tesr')
+```
+
+模式匹配是一个相当高级的文本处理工具，在Python中，还支持更高级的语言处理工具，如**自然语言处理**等
