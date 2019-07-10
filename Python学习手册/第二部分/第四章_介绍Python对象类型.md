@@ -322,7 +322,7 @@ a\na
 >>> match = re.match('Hello[ \t]*(.*)world','Hello    Python world')
 >>> match.group(1)
 'Python '
->>> match = re.match('/(.*)/(.*)/(.*)','usr/hoe/tesr')
+>>> match = re.match('/(.*)/(.*)/(.*)','/usr/hoe/tesr')  # 当字符串为usr/hoe/tesr返回的match对象没有相关方法
 >>> match.groups()
 ('usr','hoe','tesr')
 ```
